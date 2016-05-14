@@ -12,12 +12,12 @@ namespace News360.Common.Pages.FrontEnd
     {
         public CreateAccountPage(IWebDriver driver) : base(driver) { }
 
-        public SignInPage OpenSignInPage()
+        public SignUpPage OpenSignUpPage()
         {
             var signInLink = _driver.FindElementWait(By.XPath("//a[contains(@class, 'expand fancybox login-signin ng-binding')]"));
             signInLink.Click();
 
-            var signInPage = new SignInPage(_driver);
+            var signInPage = new SignUpPage(_driver);
             signInPage.Initialize();
             return signInPage;
         }

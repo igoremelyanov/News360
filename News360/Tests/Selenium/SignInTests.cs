@@ -8,6 +8,7 @@ using News360.Common.Pages;
 using News360.Common.Base;
 using NUnit.Framework;
 using System.Web.Configuration;
+using News360.Common;
 using News360.Common.Pages.FrontEnd;
 using OpenQA.Selenium;
 
@@ -16,7 +17,8 @@ namespace News360.Tests.Selenium
     internal class SignInTests : SeleniumBaseForNews360Website
     {
         private HomePage _homePage;
-     
+        private RegistrationDataForSignUp _accountData;
+
         public override void BeforeAll()
         {
             //Go to Home Page
@@ -42,11 +44,20 @@ namespace News360.Tests.Selenium
         [Test, Repeat(5)]
         public void Can_sign_In_with_valid_email_and_password()
         {
-           //Open Pop up form for choosing method of account creation
-           var createAccountPage = _homePage.OpenCreateAccountPage();
-           //Choose Email signIn link
-           var signInPage = createAccountPage.OpenSignInPage();
-           //Entering valid data
+            //Register new Account
+
+            _accountData = TestDataGenerator.CreateValidAccountDataForSignUp();
+            //Open Pop up form for choosing method of account creation
+            var createAccountPage = _homePage.OpenCreateAccountPage();
+            //Choose Email signUp link
+            var signUpPage = createAccountPage.OpenSignUpPage();
+            //Entering valid data
+            signUpPage.Register(_accountData);
+
+
+            //Login with created Account - SignIn
+
+
 
             // Assert.AreEqual("COMPANY", aboutusCompanyPage.TitleCompanyPage);
 
