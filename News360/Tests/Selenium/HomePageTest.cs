@@ -28,6 +28,9 @@ namespace News360.Tests.Selenium
         public override void BeforeEach()
         {
             base.BeforeEach();
+            //Logout
+            _driver.Manage().Cookies.DeleteAllCookies();
+            _driver.Navigate().Refresh();
 
             //_driver.Manage().Cookies.DeleteAllCookies();
             //_loginPage = new AdminWebsiteLoginPage(_driver);
@@ -35,8 +38,7 @@ namespace News360.Tests.Selenium
 
         }
 
-        [Test, CategorySmoke]
-        //[Test]
+        [Test, CategorySmoke, Repeat(10)]
         public void Can_see_HomePage()
         {
             Assert.AreEqual("News360: Your personalized news reader app", _driver.Title);

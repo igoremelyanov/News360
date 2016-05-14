@@ -26,7 +26,10 @@ namespace News360.Tests.Selenium
         public override void BeforeEach()
         {
             base.BeforeEach();
+            //Logout
             _driver.Manage().Cookies.DeleteAllCookies();
+            _driver.Navigate().Refresh();
+
             //Create Page Object
             _homePage = new HomePage(_driver);
              // _homePage.
@@ -35,8 +38,8 @@ namespace News360.Tests.Selenium
 
         }
 
-        [Test]
-        //[Test, Repeat(10)]
+        
+        [Test, Repeat(5)]
         public void Can_sign_In_with_valid_email_and_password()
         {
            //Open Pop up form for choosing method of account creation
