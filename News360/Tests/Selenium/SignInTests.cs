@@ -41,12 +41,12 @@ namespace News360.Tests.Selenium
         }
 
         
-        [Test, Repeat(5)]
-        public void Can_sign_In_with_valid_email_and_password()
+        [Test, Repeat(1)]
+        public void Can_Register_and_Sign_In_with_valid_email_and_password()
         {
-            //Register new Account
+            //Register new Account - SignUp
 
-            _accountData = TestDataGenerator.CreateValidAccountDataForSignUp();
+            _accountData = TestDataGenerator.CreateValidAccountDataForRegister();
             //Open Pop up form for choosing method of account creation
             var createAccountPage = _homePage.OpenCreateAccountPage();
             //Choose Email signUp link

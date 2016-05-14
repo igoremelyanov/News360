@@ -30,7 +30,7 @@ namespace News360.Common
         }
 
 
-        public static RegistrationDataForSignUp CreateValidAccountDataForSignUp(
+        public static RegistrationDataForSignUp CreateValidAccountDataForRegister(
           string currencyCode = null,
           string cultureCode = null,
           string countryCode = null,
