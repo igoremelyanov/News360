@@ -39,6 +39,17 @@ namespace News360.Common.Pages.FrontEnd
             // Thread.Sleep(1000);
         }
 
+        public void EnterNotMatchedRegistrationData(RegistrationDataForSignUp data)
+        {
+            //_driver.Manage().Window.Maximize();
+            //_driver.ScrollToElement(_email);
+            _email.SendKeys(data.Email);
+            _password.SendKeys(data.Password);
+            _passwordConfirm.SendKeys(data.PasswordConfirm);
+            //_driver.WaitForJavaScript();
+            // Thread.Sleep(1000);
+        }
+
         public void ClickRegisterButton()
         {
             if (IsRegisterButtonEnabled())
@@ -52,6 +63,12 @@ namespace News360.Common.Pages.FrontEnd
         {
             return _submitButton.Enabled;
         }
+
+        public string GetSignUpValidationMsg()
+        {
+            return _nonmatchedValidationMessage.Text;
+        }
+
 
 #pragma warning disable 649
         #region registration data
@@ -70,12 +87,10 @@ namespace News360.Common.Pages.FrontEnd
         
         [FindsBy(How = How.XPath, Using = "//div/form[contains(@class, 'signup ng-pristine ng-valid') and contains(@style, 'display: block;')]/div/button[contains(@type, 'submit')]")]
         private IWebElement _submitButton;
-       
-        //[FindsBy(How = How.Id, Using = "over18")]
-        //private IWebElement _over18;
 
-        //[FindsBy(How = How.Id, Using = "acceptTerms")]
-        //private IWebElement _acceptTerms;
+        [FindsBy(How = How.XPath, Using = "//li[contains(@class, 'equalto')]")]
+        private IWebElement _nonmatchedValidationMessage;
+
         #endregion
 
     }

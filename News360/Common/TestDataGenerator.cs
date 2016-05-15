@@ -37,6 +37,7 @@ namespace News360.Common
             {
                 //Username = username,
                 Password = password ?? GetRandomString(),
+                PasswordConfirm = password ?? GetRandomString(),
                 //Title = GetRandomTitle(),
                 //FirstName = "First-name" + GetRandomStringWithSpecialSymbols(36),
                 //LastName = "Last-name" + GetRandomStringWithSpecialSymbols(11),

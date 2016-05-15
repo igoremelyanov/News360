@@ -13,6 +13,12 @@ namespace News360.Common.Pages.FrontEnd
     {
         public HomePage(IWebDriver driver) : base(driver) {}
 
+
+        public string TitleHomePage
+        {
+            get { return _driver.Title; }
+        }
+
         public SignInMethodForm OpenSignInMethodForm()
         {
             var signinLink = _driver.FindElementWait(By.XPath("//a[contains(@class, 'eNav startreading ng-binding')]"));

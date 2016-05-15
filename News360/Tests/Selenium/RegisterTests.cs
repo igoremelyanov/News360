@@ -58,5 +58,21 @@ namespace News360.Tests.Selenium
             //accountPage.Logout();
         }
 
+        [Test]
+        public void Can_not_signUp_with_not_matched_password_and_conformation_password()
+        {
+            _accountData = TestDataGenerator.CreateValidAccountDataForRegister();
+            //Open SignIn method form
+            var signInMethodForm = _homePage.OpenSignInMethodForm();
+            //Open SignIn Form clicking on Signin with email method
+            var loginPage = signInMethodForm.OpenLogInPage();
+            //Go to Register page - SignUp
+            var signUpPage = loginPage.OpenSignUpPage();
+            //Try to Register with not matched password and conformation password
+            signUpPage.EnterNotMatchedRegistrationData(_accountData);
+            signUpPage.ClickRegisterButton();
+            var validationMsg = signUpPage.GetSignUpValidationMsg();
+            Assert.That(validationMsg, Is.StringContaining("This value should be the same."));
+        }
     }
 }
