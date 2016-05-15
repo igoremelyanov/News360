@@ -14,9 +14,9 @@ namespace News360.Common.Pages.FrontEnd
         public StartReadingPage(IWebDriver driver) : base(driver) { }
 
 
-        public string Title
+        public string ExploreLink
         {
-            get { return _driver.FindElementValue(By.XPath("//div[text()='Start Reading']")); }
+            get { return _driver.FindElementValue(By.XPath("//div/a[contains(@href, 'explore/')]")); }
         }
 
         public AccountPage OpenAccountPage()

@@ -46,7 +46,7 @@ namespace News360.Tests.Selenium
             var signUpPage = loginPage.OpenSignUpPage();
             //Entering valid data
             var welcomePage = signUpPage.Register(_accountData);
-            Assert.AreEqual("Welcome to News360", welcomePage.Title);
+            Assert.That(welcomePage.WelcomeMsg, Is.StringContaining("Welcome to News360"));
             //LogOut
             var startReadingPage = welcomePage.OpenStartReadingPage();
             var accountPage = startReadingPage.OpenAccountPage();
@@ -64,7 +64,7 @@ namespace News360.Tests.Selenium
             var loginPage = signInMethodForm.OpenLogInPage();
             //Entering valid data
             var startReadingPage = loginPage.Login(_accountData.Email, _accountData.Password);
-            //Assert.AreEqual("Start Reading", startReadingPage.Title);
+            Assert.That(startReadingPage.ExploreLink, Is.StringContaining("EXPLORE"));
 
 
             // base.AfterAll();

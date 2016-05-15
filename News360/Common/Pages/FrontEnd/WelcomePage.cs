@@ -12,9 +12,9 @@ namespace News360.Common.Pages.FrontEnd
     {
         public WelcomePage(IWebDriver driver) : base(driver) { }
 
-        public string Title
+        public string WelcomeMsg
         {
-            get { return _driver.FindElementValue(By.XPath("//h2[text()='Welcome to News360']")); }
+            get { return _driver.FindElementValue(By.XPath("//div/h2[contains(@class, 'ng-binding')]")); }
         }
 
         public StartReadingPage OpenStartReadingPage()
