@@ -9,6 +9,6 @@ C:\Projects\News360\News360\bin\Debug\WebDriver.pdb
 C:\Projects\News360\News360\bin\Debug\WebDriver.xml
 C:\Projects\News360\News360\bin\Debug\WebDriver.Support.pdb
 C:\Projects\News360\News360\bin\Debug\WebDriver.Support.xml
-C:\Projects\News360\News360\obj\Debug\News360.csprojResolveAssemblyReference.cache
 C:\Projects\News360\News360\obj\Debug\News360.dll
 C:\Projects\News360\News360\obj\Debug\News360.pdb
+C:\Projects\News360\News360\obj\Debug\News360.csprojResolveAssemblyReference.cache

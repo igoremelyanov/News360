@@ -54,8 +54,12 @@
     <Compile Include="Common\Base\SeleniumBase.cs" />
     <Compile Include="Common\Base\SeleniumBaseForNews360Website.cs" />
     <Compile Include="Common\Extensions\WebDriverExtentions.cs" />
-    <Compile Include="Common\Pages\FrontEnd\CreateAccountPage.cs" />
+    <Compile Include="Common\Pages\FrontEnd\AccountPage.cs" />
     <Compile Include="Common\Pages\FrontEnd\HomePage.cs" />
+    <Compile Include="Common\Pages\FrontEnd\StartReadingPage.cs" />
+    <Compile Include="Common\Pages\FrontEnd\WelcomePage.cs" />
+    <Compile Include="Common\Pages\FrontEnd\LogInPage.cs" />
+    <Compile Include="Common\Pages\FrontEnd\SignInMethodForm.cs" />
     <Compile Include="Common\Pages\FrontEnd\SignUpPage.cs" />
     <Compile Include="Common\Pages\PageBase.cs" />
     <Compile Include="Common\TestDataGenerator.cs" />

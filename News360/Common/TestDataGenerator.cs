@@ -30,11 +30,7 @@ namespace News360.Common
         }
 
 
-        public static RegistrationDataForSignUp CreateValidAccountDataForRegister(
-          string currencyCode = null,
-          string cultureCode = null,
-          string countryCode = null,
-          string password = null)
+        public static RegistrationDataForSignUp CreateValidAccountDataForRegister(string password = null)
         {
             //var username = "Pl_" + GetRandomStringWithSpecialSymbols(9);
             var result = new RegistrationDataForSignUp

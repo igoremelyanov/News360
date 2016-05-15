@@ -34,35 +34,67 @@ namespace News360.Tests.Selenium
 
             //Create Page Object
             _homePage = new HomePage(_driver);
-             // _homePage.
-            //_loginPage = new AdminWebsiteLoginPage(_driver);
-            //_loginPage.NavigateToAdminWebsite();
+
+            ////////////////Registering new Account///////////
+            //Go to Login page - SignIn
+            _accountData = TestDataGenerator.CreateValidAccountDataForRegister();
+            //Open SignIn method form
+            var signInMethodForm = _homePage.OpenSignInMethodForm();
+            //Open SignIn Form clicking on Signin with email method
+            var loginPage = signInMethodForm.OpenLogInPage();
+            //Go to Register page - SignUp
+            var signUpPage = loginPage.OpenSignUpPage();
+            //Entering valid data
+            var welcomePage = signUpPage.Register(_accountData);
+            Assert.AreEqual("Welcome to News360", welcomePage.Title);
+            //LogOut
+            var startReadingPage = welcomePage.OpenStartReadingPage();
+            var accountPage = startReadingPage.OpenAccountPage();
+            accountPage.Logout();
 
         }
 
-        
+
         [Test, Repeat(1)]
-        public void Can_Register_and_Sign_In_with_valid_email_and_password()
+        public void Can_Sign_In_with_valid_email_and_password()
         {
-            //Register new Account - SignUp
-
-            _accountData = TestDataGenerator.CreateValidAccountDataForRegister();
-            //Open Pop up form for choosing method of account creation
-            var createAccountPage = _homePage.OpenCreateAccountPage();
-            //Choose Email signUp link
-            var signUpPage = createAccountPage.OpenSignUpPage();
+            //LogInPage with the new created Account
+            var signInMethodForm = _homePage.OpenSignInMethodForm();
+            //Open SignIn Form clicking on Signin with email method
+            var loginPage = signInMethodForm.OpenLogInPage();
             //Entering valid data
-            signUpPage.Register(_accountData);
+            var startReadingPage = loginPage.Login(_accountData.Email, _accountData.Password);
+            //Assert.AreEqual("Start Reading", startReadingPage.Title);
 
-
-            //Login with created Account - SignIn
-
-
-
-            // Assert.AreEqual("COMPANY", aboutusCompanyPage.TitleCompanyPage);
 
             // base.AfterAll();
 
         }
+
+        [Test]
+        public void Can_not_Sign_In_with_empty_email_and_password()
+        {
+            //_loginPage.ClearFields();
+            //_loginPage.ClickLoginButton();
+
+            //var errorMsg = _loginPage.GetLoginErrorMsg();
+
+            //Assert.That(errorMsg, Is.StringContaining("Incorrect Username or Password"));
+
+        }
+
+        [Test]
+        public void Can_not_Sign_In_with_non_registered_email()
+        {
+
+        }
+
+        [Test]
+        public void Can_not_Sign_In_with_invalid_password()
+        {
+
+        }
+
+
     }
 }

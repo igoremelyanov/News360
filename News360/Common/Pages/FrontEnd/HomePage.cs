@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using News360.Common.Extensions;
-//using News360.Common.Pages;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 
 
 namespace News360.Common.Pages.FrontEnd
@@ -13,20 +13,22 @@ namespace News360.Common.Pages.FrontEnd
     {
         public HomePage(IWebDriver driver) : base(driver) {}
 
-        //protected override string GetPageUrl()
-        //{
-        //    return "Home/";
-        //}
-
-        public CreateAccountPage OpenCreateAccountPage()
+        public SignInMethodForm OpenSignInMethodForm()
         {
-            var startReadingButton = _driver.FindElementWait(By.XPath("//a[contains(@class, 'eNav startreading ng-binding')]"));
-            startReadingButton.Click();
-
-            var createAccountPage = new CreateAccountPage(_driver);
-            createAccountPage.Initialize();
-            return createAccountPage;
+            var signinLink = _driver.FindElementWait(By.XPath("//a[contains(@class, 'eNav startreading ng-binding')]"));
+            signinLink.Click();
+            var signinmethodForm = new SignInMethodForm(_driver);
+            signinmethodForm.Initialize();
+            return signinmethodForm;
         }
+
+        //#pragma warning disable 649
+        //#region registration data
+
+        //[FindsBy(How = How.XPath, Using = "//a[contains(@class, 'eNav startreading ng-binding')]")]
+        //private IWebElement _signinLink;
+        
+        //#endregion
 
     }
 }
