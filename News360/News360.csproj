@@ -66,6 +66,7 @@
     <Compile Include="Common\TestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Selenium\HomePageTest.cs" />
+    <Compile Include="Tests\Selenium\RegisterTests.cs" />
     <Compile Include="Tests\Selenium\SignInTests.cs" />
   </ItemGroup>
   <ItemGroup>

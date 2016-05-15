@@ -37,16 +37,14 @@ namespace News360.Common.Pages.FrontEnd
             return startreadingPage;
         }
 
-        private void EnterLoginData(string email, string password)
+        public void EnterLoginData(string email, string password)
         {
             //_driver.Manage().Window.Maximize();
             //_driver.ScrollToElement(_email);
             _email.SendKeys(email);
             _password.SendKeys(password);
             //_driver.WaitForJavaScript();
-            //// Thread.Sleep(10000);
-            //_over18.Click();
-            //_acceptTerms.Click();
+            // Thread.Sleep(10000);
         }
 
         public void ClickSignInButton()
@@ -63,6 +61,16 @@ namespace News360.Common.Pages.FrontEnd
             return _signinButton.Enabled;
         }
 
+        public string GetLoginValidationMsg()
+        {
+            return _emailandpasswordValidationMessage.Text;
+        }
+
+        public string GetLoginErrorMsg()
+        {
+            return _emailandpasswordErrorMessage.Text;
+        }
+
 #pragma warning disable 649
         #region registration data
 
@@ -74,7 +82,13 @@ namespace News360.Common.Pages.FrontEnd
         
         [FindsBy(How = How.XPath, Using = "//div[contains(@class, 'simplepopup expand')]//form[contains(@class, 'signin ng-pristine ng-valid')]/div/button[@type='submit']")]
         private IWebElement _signinButton;
-        
+
+        [FindsBy(How = How.XPath, Using = "//li[contains(@class, 'required')]")]
+        private IWebElement _emailandpasswordValidationMessage;
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class, 'simplepopup expand')]//div[contains(@class, 'error-message message ng-binding')]")]
+        private IWebElement _emailandpasswordErrorMessage;
+
         #endregion
 
     }

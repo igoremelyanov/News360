@@ -36,9 +36,7 @@ namespace News360.Common.Pages.FrontEnd
             _password.SendKeys(data.Password);
             _passwordConfirm.SendKeys(data.Password);
             //_driver.WaitForJavaScript();
-            //// Thread.Sleep(10000);
-            //_over18.Click();
-            //_acceptTerms.Click();
+            // Thread.Sleep(1000);
         }
 
         public void ClickRegisterButton()

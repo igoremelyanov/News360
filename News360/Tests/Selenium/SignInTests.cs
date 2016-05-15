@@ -58,41 +58,53 @@ namespace News360.Tests.Selenium
         [Test, Repeat(1)]
         public void Can_Sign_In_with_valid_email_and_password()
         {
-            //LogInPage with the new created Account
+            //Open Login methog form
             var signInMethodForm = _homePage.OpenSignInMethodForm();
             //Open SignIn Form clicking on Signin with email method
             var loginPage = signInMethodForm.OpenLogInPage();
             //Entering valid data
             var startReadingPage = loginPage.Login(_accountData.Email, _accountData.Password);
             Assert.That(startReadingPage.ExploreLink, Is.StringContaining("EXPLORE"));
-
-
-            // base.AfterAll();
-
         }
 
         [Test]
         public void Can_not_Sign_In_with_empty_email_and_password()
         {
-            //_loginPage.ClearFields();
-            //_loginPage.ClickLoginButton();
-
-            //var errorMsg = _loginPage.GetLoginErrorMsg();
-
-            //Assert.That(errorMsg, Is.StringContaining("Incorrect Username or Password"));
-
+            //Open Login method form
+            var signInMethodForm = _homePage.OpenSignInMethodForm();
+            //Open SignIn Form clicking on Signin with email method
+            var loginPage = signInMethodForm.OpenLogInPage();
+            //Try to Login with empty data
+            loginPage.EnterLoginData("","");
+            loginPage.ClickSignInButton();
+            var validationMsg = loginPage.GetLoginValidationMsg();
+            Assert.That(validationMsg, Is.StringContaining("This value is required."));
         }
 
         [Test]
         public void Can_not_Sign_In_with_non_registered_email()
         {
-
+            //Open Login methog form
+            var signInMethodForm = _homePage.OpenSignInMethodForm();
+            //Open SignIn Form clicking on Signin with email method
+            var loginPage = signInMethodForm.OpenLogInPage();
+            //Try to Login with not registered email
+            loginPage.Login(_accountData.Email + "nonregistered", _accountData.Password);
+            var errorMsg = loginPage.GetLoginErrorMsg();
+            Assert.That(errorMsg, Is.StringContaining("Invalid login or password"));
         }
 
         [Test]
-        public void Can_not_Sign_In_with_invalid_password()
+        public void Can_not_sign_in_with_registered_email_but_wrong_password()
         {
-
+            //Open Login methog form
+            var signInMethodForm = _homePage.OpenSignInMethodForm();
+            //Open SignIn Form clicking on Signin with email method
+            var loginPage = signInMethodForm.OpenLogInPage();
+            //Try to Login with not registered email
+            loginPage.Login(_accountData.Email, _accountData.Password + "wrongpassword");
+            var errorMsg = loginPage.GetLoginErrorMsg();
+            Assert.That(errorMsg, Is.StringContaining("Invalid login or password"));
         }
 
 
